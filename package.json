@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/blas-ext-base-scusum",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Calculate the cumulative sum of single-precision floating-point strided array elements.",
   "license": "Apache-2.0",
   "author": {
