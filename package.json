@@ -1,0 +1,43 @@
+{
+  "name": "@stdlib/blas-ext-base-scusum",
+  "version": "0.0.0",
+  "description": "Calculate the cumulative sum of single-precision floating-point strided array elements.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./mod.js",
+  "homepage": "https://stdlib.io",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stdlib-js/blas-ext-base-scusum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stdlib-js/stdlib/issues"
+  },
+  "keywords": [
+    "stdlib",
+    "stdmath",
+    "statistics",
+    "stats",
+    "mathematics",
+    "math",
+    "blas",
+    "extended",
+    "sum",
+    "total",
+    "summation",
+    "cumulative",
+    "accumulate",
+    "strided",
+    "strided array",
+    "typed",
+    "array",
+    "float32",
+    "float",
+    "single",
+    "float32array"
+  ],
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/athan"
+  }
+}
