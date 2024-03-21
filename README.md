@@ -41,38 +41,32 @@ limitations under the License.
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-base-scusum
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-scusum = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-scusum@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var scusum = require( 'path/to/vendor/umd/blas-ext-base-scusum/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-scusum@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.scusum;
-})();
-</script>
+var scusum = require( '@stdlib/blas-ext-base-scusum' );
 ```
 
 #### scusum( N, sum, x, strideX, y, strideY )
@@ -104,18 +98,15 @@ The function has the following parameters:
 -   **y**: output [`Float32Array`][@stdlib/array/float32].
 -   **strideY**: index increment for `y`.
 
-The `N` and `stride` parameters determine which elements in `x` and `y` are accessed at runtime. For example, to compute the cumulative sum of every other element in `x`,
+The `N` and `stride` parameters determine which elements in the strided arrays are accessed at runtime. For example, to compute the cumulative sum of every other element in the strided input array,
 
 ```javascript
 var Float32Array = require( '@stdlib/array-float32' );
-var floor = require( '@stdlib/math-base-special-floor' );
 
 var x = new Float32Array( [ 1.0, 2.0, 2.0, -7.0, -2.0, 3.0, 4.0, 2.0 ] );
 var y = new Float32Array( x.length );
 
-var N = floor( x.length / 2 );
-
-var v = scusum( N, 0.0, x, 2, y, 1 );
+var v = scusum( 4, 0.0, x, 2, y, 1 );
 // y => <Float32Array>[ 1.0, 3.0, 1.0, 5.0, 0.0, 0.0, 0.0, 0.0 ]
 ```
 
@@ -125,7 +116,6 @@ Note that indexing is relative to the first index. To introduce an offset, use [
 
 ```javascript
 var Float32Array = require( '@stdlib/array-float32' );
-var floor = require( '@stdlib/math-base-special-floor' );
 
 // Initial arrays...
 var x0 = new Float32Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ] );
@@ -135,9 +125,7 @@ var y0 = new Float32Array( x0.length );
 var x1 = new Float32Array( x0.buffer, x0.BYTES_PER_ELEMENT*1 ); // start at 2nd element
 var y1 = new Float32Array( y0.buffer, y0.BYTES_PER_ELEMENT*3 ); // start at 4th element
 
-var N = floor( x0.length / 2 );
-
-scusum( N, 0.0, x1, -2, y1, 1 );
+scusum( 4, 0.0, x1, -2, y1, 1 );
 // y0 => <Float32Array>[ 0.0, 0.0, 0.0, 4.0, 6.0, 4.0, 5.0, 0.0 ]
 ```
 
@@ -160,18 +148,15 @@ The function has the following additional parameters:
 -   **offsetX**: starting index for `x`.
 -   **offsetY**: starting index for `y`.
 
-While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying `buffer`, `offsetX` and `offsetY` parameters support indexing semantics based on a starting indices. For example, to calculate the cumulative sum of every other value in `x` starting from the second value and to store in the last `N` elements of `y` starting from the last element
+While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying `buffer`, offsetX and offsetY parameters support indexing semantics based on a starting indices. For example, to calculate the cumulative sum of every other value in the strided input array starting from the second value and to store in the last `N` elements of the strided output array starting from the last element
 
 ```javascript
 var Float32Array = require( '@stdlib/array-float32' );
-var floor = require( '@stdlib/math-base-special-floor' );
 
 var x = new Float32Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ] );
 var y = new Float32Array( x.length );
 
-var N = floor( x.length / 2 );
-
-scusum.ndarray( N, 0.0, x, 2, 1, y, -1, y.length-1 );
+scusum.ndarray( 4, 0.0, x, 2, 1, y, -1, y.length-1 );
 // y => <Float32Array>[ 0.0, 0.0, 0.0, 0.0, 5.0, 1.0, -1.0, 1.0 ]
 ```
 
@@ -195,36 +180,19 @@ scusum.ndarray( N, 0.0, x, 2, 1, y, -1, y.length-1 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-float32@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-scusum@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-base-discrete-uniform' ).factory;
+var filledarrayBy = require( '@stdlib/array-filled-by' );
+var Float32Array = require( '@stdlib/array-float32' );
+var scusum = require( '@stdlib/blas-ext-base-scusum' );
 
-var y;
-var x;
-var i;
-
-x = new Float32Array( 10 );
-y = new Float32Array( x.length );
-for ( i = 0; i < x.length; i++ ) {
-    x[ i ] = round( randu()*100.0 );
-}
+var x = filledarrayBy( 10, 'float32', discreteUniform( 0, 100 ) );
+var y = new Float32Array( x.length );
 console.log( x );
 console.log( y );
 
 scusum( x.length, 0.0, x, 1, y, -1 );
 console.log( y );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -325,17 +293,17 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-base-scusum/main/LICENSE
 
-[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32/tree/umd
+[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
 <!-- <related-links> -->
 
-[@stdlib/blas/ext/base/dcusum]: https://github.com/stdlib-js/blas-ext-base-dcusum/tree/umd
+[@stdlib/blas/ext/base/dcusum]: https://github.com/stdlib-js/blas-ext-base-dcusum
 
-[@stdlib/blas/ext/base/gcusum]: https://github.com/stdlib-js/blas-ext-base-gcusum/tree/umd
+[@stdlib/blas/ext/base/gcusum]: https://github.com/stdlib-js/blas-ext-base-gcusum
 
-[@stdlib/blas/ext/base/scusumpw]: https://github.com/stdlib-js/blas-ext-base-scusumpw/tree/umd
+[@stdlib/blas/ext/base/scusumpw]: https://github.com/stdlib-js/blas-ext-base-scusumpw
 
 <!-- </related-links> -->
 
