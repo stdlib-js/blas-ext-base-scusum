@@ -43,6 +43,11 @@
   "dependencies": {
     "@stdlib/assert-is-error": "^0.2.1",
     "@stdlib/blas-ext-base-scusumkbn": "^0.2.1",
+    "@stdlib/napi-argv": "^0.2.1",
+    "@stdlib/napi-argv-float": "^0.2.1",
+    "@stdlib/napi-argv-int64": "^0.2.1",
+    "@stdlib/napi-argv-strided-float32array": "^0.2.1",
+    "@stdlib/napi-export": "^0.2.1",
     "@stdlib/utils-define-nonenumerable-read-only-property": "^0.2.1",
     "@stdlib/utils-library-manifest": "^0.2.1",
     "@stdlib/utils-try-require": "^0.2.1"
