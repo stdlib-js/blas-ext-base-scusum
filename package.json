@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/blas-ext-base-scusum",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Calculate the cumulative sum of single-precision floating-point strided array elements.",
   "license": "Apache-2.0",
   "author": {
@@ -42,16 +42,16 @@
   },
   "dependencies": {
     "@stdlib/assert-is-error": "^0.2.2",
-    "@stdlib/blas-base-shared": "^0.1.0",
+    "@stdlib/blas-base-shared": "^0.2.0",
     "@stdlib/blas-ext-base-scusumkbn": "^0.2.2",
     "@stdlib/napi-argv": "^0.2.2",
     "@stdlib/napi-argv-float": "^0.2.2",
     "@stdlib/napi-argv-int64": "^0.2.2",
     "@stdlib/napi-argv-strided-float32array": "^0.2.2",
-    "@stdlib/napi-export": "^0.2.2",
+    "@stdlib/napi-export": "^0.3.0",
     "@stdlib/strided-base-stride2offset": "^0.1.0",
     "@stdlib/utils-define-nonenumerable-read-only-property": "^0.2.2",
-    "@stdlib/utils-library-manifest": "^0.2.2",
+    "@stdlib/utils-library-manifest": "^0.2.3",
     "@stdlib/utils-try-require": "^0.2.2"
   },
   "devDependencies": {
@@ -105,9 +105,6 @@
     "single",
     "float32array"
   ],
-  "__stdlib__": {
-    "wasm": false
-  },
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/stdlib"

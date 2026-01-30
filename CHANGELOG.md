@@ -2,9 +2,9 @@
 
 > Package changelog.
 
-<section class="release" id="unreleased">
+<section class="release" id="v0.3.0">
 
-## Unreleased (2025-01-18)
+## 0.3.0 (2026-01-30)
 
 <section class="features">
 
@@ -22,6 +22,7 @@
 
 <details>
 
+-   [`2035f34`](https://github.com/stdlib-js/stdlib/commit/2035f344a1a469278042b7532f034dc6119933b3) - **docs:** add function documentation _(by Athan Reines)_
 -   [`6641a29`](https://github.com/stdlib-js/stdlib/commit/6641a29ca92ada4779b1a55d5c681cf375eae791) - **feat:** add C `ndarray` API and refactor `blas/ext/base/scusum` [(#4799)](https://github.com/stdlib-js/stdlib/pull/4799) _(by Muhammad Haris)_
 -   [`62364f6`](https://github.com/stdlib-js/stdlib/commit/62364f62ea823a3b52c2ad25660ecd80c71f8f36) - **style:** fix C comment alignment _(by Philipp Burckhardt)_
 
@@ -35,8 +36,9 @@
 
 ### Contributors
 
-A total of 2 people contributed to this release. Thank you to the following contributors:
+A total of 3 people contributed to this release. Thank you to the following contributors:
 
+-   Athan Reines
 -   Muhammad Haris
 -   Philipp Burckhardt
 
